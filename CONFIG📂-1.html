@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Menu chức năng AIMTRICKSHOOT1.0</title>
+<style>
+  body {
+    background: #121212;
+    color: #eee;
+    font-family: Arial, sans-serif;
+    margin: 0; padding: 20px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #00bfff;
+  }
+  .menu {
+    max-width: 480px;
+    margin: 0 auto 20px auto;
+  }
+  .function-item {
+    background: #222;
+    margin-bottom: 18px;
+    padding: 18px 25px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.3rem;
+    user-select: none;
+  }
+  input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+  .buttons {
+    max-width: 480px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+  }
+  button {
+    flex: 1;
+    padding: 15px 0;
+    font-size: 1.2rem;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    background-color: #007acc;
+    color: #fff;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+  button:hover {
+    background-color: #005fa3;
+  }
+  #message {
+    max-width: 480px;
+    margin: 15px auto;
+    padding: 15px;
+    background-color: #00bfff;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: none;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+
+<h1>𝐀𝐈𝐌𝐓𝐑𝐈𝐂𝐊𝐒𝐇𝐎𝐎𝐓𝟏.𝟎</h1>
+
+<div class="menu">
+  <div class="function-item">
+    <label for="select-all"><strong>Chọn tất cả</strong></label>
+    <input type="checkbox" id="select-all" />
+  </div>
+  <div class="function-item">
+    <label for="nhẹ-tâm">Nhẹ Tâm</label>
+    <input type="checkbox" class="func-checkbox" id="nhẹ-tâm" />
+  </div>
+  <div class="function-item">
+    <label for="fix-nặng-tâm">Fix Nặng Tâm</label>
+    <input type="checkbox" class="func-checkbox" id="fix-nặng-tâm" />
+  </div>
+  <div class="function-item">
+    <label for="fix-lố-tâm">Fix Lố Tâm</label>
+    <input type="checkbox" class="func-checkbox" id="fix-lố-tâm" />
+  </div>
+  <div class="function-item">
+    <label for="fix-rung-tâm">Fix Rung Tâm</label>
+    <input type="checkbox" class="func-checkbox" id="fix-rung-tâm" />
+  </div>
+  <div class="function-item">
+    <label for="aimbot">Aimbot</label>
+    <input type="checkbox" class="func-checkbox" id="aimbot" />
+  </div>
+  <div class="function-item">
+    <label for="aimlock">Aimlock</label>
+    <input type="checkbox" class="func-checkbox" id="aimlock" />
+  </div>
+  <div class="function-item">
+    <label for="aimbottrick">Aimbottrick</label>
+    <input type="checkbox" class="func-checkbox" id="aimbottrick" />
+  </div>
+  <div class="function-item">
+    <label for="aimlocktrick">Aimlocktrick</label>
+    <input type="checkbox" class="func-checkbox" id="aimlocktrick" />
+  </div>
+</div>
+
+<div class="buttons">
+  <button id="btn-select-file">Chọn file</button>
+  <button id="btn-activate">Kích hoạt chức năng</button>
+</div>
+
+<div id="message">Kích hoạt thành công!</div>
+
+<!-- Ẩn input file để gọi từ nút -->
+<input type="file" id="file-input" style="display:none" />
+
+<script>
+  const selectAll = document.getElementById('select-all');
+  const checkboxes = document.querySelectorAll('.func-checkbox');
+  const btnSelectFile = document.getElementById('btn-select-file');
+  const btnActivate = document.getElementById('btn-activate');
+  const message = document.getElementById('message');
+  const fileInput = document.getElementById('file-input');
+
+  // Chọn tất cả chức năng
+  selectAll.addEventListener('change', () => {
+    checkboxes.forEach(cb => cb.checked = selectAll.checked);
+  });
+
+  // Nếu checkbox thay đổi, cập nhật checkbox chọn tất cả
+  checkboxes.forEach(cb => {
+    cb.addEventListener('change', () => {
+      if ([...checkboxes].some(c => !c.checked)) {
+        selectAll.checked = false;
+      } else {
+        selectAll.checked = true;
+      }
+    });
+  });
+
+  // Bấm nút chọn file mở hộp thoại chọn file
+  btnSelectFile.addEventListener('click', () => {
+    fileInput.click();
+  });
+
+  // Bấm nút kích hoạt chức năng
+  btnActivate.addEventListener('click', () => {
+    // Có thể ở đây bạn làm thêm xử lý với file và các checkbox
+    // Hiện thông báo kích hoạt thành công
+    message.style.display = 'block';
+
+    // Ẩn thông báo sau 10 giây (10000 ms)
+    setTimeout(() => {
+      message.style.display = 'none';
+    }, 10000);
+  });
+</script>
+
+</body>
+</html>
